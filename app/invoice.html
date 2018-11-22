@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Invoice</title>
+    <script src="./app.js"></script>
+</head>
+<body>
+
+    <h1>Add Invoice</h1><br>
+    <form id="frm1" action="#">
+        Importer:<input type="value" name="importer" id="importer"><br>
+        Exporter:<input type="value" name="exporter" id="exporter"><br>
+        Goods:<input type="value" name="goods" id="goods"><br>
+        Price:<input type="value" name="price" id="price"><br>
+        Credit Term:<input type="value" name="creditTerm" id="creditTerm"><br>
+        Supplier:<input type="value" name="supplier" id="supplier"><br>
+    </form>
+  
+    <button class="btn btn-default btn-create" type="button" onclick="App.createInvoice()">Create</button><br><br>
+
+    <h1>Update invoice</h1><br>
+    <form id="frm1" action="#">
+        Invoice ID:<input type="value" name="invoiceID" id="invoiceID"><br>
+        Importer:<input type="value" name="uimporter" id="uimporter"><br>
+        Exporter:<input type="value" name="uexporter" id="uexporter"><br>
+        Goods:<input type="value" name="ugoods" id="ugoods"><br>
+        Price:<input type="value" name="uprice" id="uprice"><br>
+        Credit Term:<input type="value" name="ucreditTerm" id="ucreditTerm"><br>
+    </form>
+  
+    <button class="btn btn-default btn-create" type="button" onclick="App.updateInvoice()">Update</button><br><br>
+
+    <h1>Add Supplier</h1><br>
+    <form id="frm1" action="#">
+        Invoice ID:<input type="value" name="invoiceID2" id="invoiceID2"><br>
+        Supplier:<input type="value" name="supplier2" id="supplier2"><br>
+    </form>
+  
+    <button class="btn btn-default btn-create" type="button" onclick="App.addSupplierToInvoice()">Update</button><br><br>
+
+    <h1>Get source of origin</h1><br>
+    <form id="frm1" action="#">
+        Invoice ID:<input type="value" name="invoiceID3" id="invoiceID3"><br>
+
+    </form>
+
+    <button class="btn btn-default btn-create" type="button" onclick="App.getSourceOfOrigin()">Get Origin</button><br><br>
+
+
+    <h1>Get Invoice</h1><br>
+    <form id="frm1" action="#">
+        Invoice ID:<input type="value" name="invoiceID3" id="invoiceID4"><br>
+    <button class="btn btn-default btn-get" type="button" onclick="App.getInvoice()">Get</button><br><br>
+</body>
+</html>

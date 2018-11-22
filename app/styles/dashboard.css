@@ -1,0 +1,594 @@
+@import url('https://fonts.googleapis.com/css?family=Pattaya');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300i,400');
+
+body {
+    padding:0;
+    margin:0;
+}
+.abody{
+    margin:0;
+    padding:0;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to left, #0f2027, #203a43, #2c5364);
+}
+
+.body{
+    width: 90%;
+    height: 90%;
+    padding:0;
+    display: grid;
+    grid-template-rows: 50px repeat(5,1fr);
+    grid-template-columns: repeat(6, 1fr);
+}
+
+header{
+    box-sizing: border-box;
+    grid-column-start: 2;
+    grid-column-end: 7;
+    width: 100%;
+    height:100%;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    background:linear-gradient(to left, #614385, #516395);
+    padding-right: 30px;
+}
+
+.search{
+    margin:auto;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search > .icon{
+    font-size: 12px;
+    position: relative;
+    color: black;
+    right: 40px;
+}
+
+.text{
+    box-sizing: border-box;
+    border:none;
+    border-radius: 50px;
+    width: 400px;
+    padding-top:7px; 
+    padding-bottom:7px;
+    padding-left: 15px; 
+}
+
+.icons{
+    grid-column-start: 4;
+    grid-column-end: 6;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.icon {
+    font-size: 28px;
+    padding-left: 20px;
+    cursor: pointer;
+    color: rgba(255,255,255,0.7);
+}
+
+.icon:hover{
+    transform: scale(1.1);
+    
+}
+
+.dashboardaside{
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-row-end: 32;
+    background: linear-gradient(225deg, #141e30, #243b55);
+    display: grid;
+    grid-template-rows: repeat(10,1fr);
+}
+
+.dashboardmain{
+    grid-row-start: 2;
+    grid-row-end: 7;
+    grid-column-start: 2;
+    grid-column-end: 7;
+    background: rgba(255,255,255,0.8);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+            "uploadinvoice getinvoice"
+            "uploadinvoice updateinvoice";
+}
+
+
+.heading{
+    box-sizing: border-box;
+    display: block;
+    text-align: center;
+    color: white;
+    font-family: 'Pattaya', sans-serif;
+    letter-spacing: 10px;
+    font-size:40px;
+    height:100%;
+    margin:auto;
+    padding-top:20%;
+    grid-row-start: 1;
+    grid-row-end:3;
+    width: 100%;
+    box-shadow: -5px 24px 29px -32px rgba(0,0,0,0.75);
+}
+
+.main{
+    grid-row-start: 3;
+    grid-row-end: 6;
+    width: 100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    color:white;
+    box-shadow: -5px 24px 29px -32px rgba(0,0,0,0.75);
+    font-family: 'Roboto', sans-serif;
+}
+
+.function{
+    grid-row-start: 6;
+    grid-row-end: 9;
+    width: 100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    color:white;
+    box-shadow: -5px 24px 29px -32px rgba(0,0,0,0.75);
+    font-family: 'Roboto', sans-serif;
+}
+
+.head{
+    font-size: 20px;
+}
+
+.mainlist{
+    height: 50%;
+    list-style: none;
+    margin:0;
+    padding:0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.mainitem{
+    transition: all 0.3s ease;
+}
+
+
+.mainitem:hover{
+    transform: scale(1.3);
+    color: lightblue;
+}
+
+.uploadinvoice {
+    grid-area: uploadinvoice;
+    width:95%;
+    height:95%;
+    margin:auto;
+    background:white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.uploadinvoicetext {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background:white;
+    margin:auto;
+    width: 60%;
+    height: 50%;
+    transition: all 0.3s ease;
+}
+
+.uploadinvoice:hover .uploadinvoicetext {
+    transform: scale(1.05);
+}
+
+.createinvoice {
+    grid-row-start: 2;
+    grid-row-end: 7;
+    grid-column-start: 2;
+    grid-column-end: 7;
+    width:100%;
+    height:100%;
+    background: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.createinvoiceform {
+    background:white;
+    width:60%;
+    height:90%;
+    border-radius: 10px;
+    box-shadow: 1px 10px 77px -45px rgba(0,0,0,0.75);
+}
+
+.invoicecreationholder {
+    height: 100%;
+    width: 70%;
+    display:grid;
+    grid-template-rows: 1fr 350px 1fr;
+    grid-template-areas: 
+            "createheader"
+            "createform"
+            "createsubmit";
+    margin:auto;
+}
+
+#frm1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.getallinvoice {
+    width: 95%;
+    height:95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    margin-left: auto;
+    margin-top: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.creatingheader {
+    margin:auto;
+}
+
+.btn-create{
+    margin:auto;
+    width:80%;
+    height:60%;
+}
+
+.getAllInvoice {
+    grid-row-start: 2;
+    grid-row-end: 7;
+    grid-column-start: 2;
+    grid-column-end: 7;
+    width:100%;
+    height:100%;
+    display: grid;
+    grid-template-rows: 70px 1fr;
+    grid-template-areas:
+            "getinvoiceheader"
+            "getinvoicerows";
+    background: white;
+}
+
+#allinvoicetable {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#allinvoicetable .allinvoicetableheader {
+    grid-area: getinvoiceheader;
+    width:100%;
+    margin: auto;
+}
+
+#allinvoicetable .allinvoicetablebody{
+    grid-area: getinvoicerows;
+    height:100%;
+    width:100%;
+    margin:auto;
+}
+
+ #allinvoicetable th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+#allinvoicetable tr {
+    text-align: left;
+    padding: 8px;
+    border:1px solid #dddddd;
+}
+
+#allinvoicetable tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.invoicedetails {
+    grid-row-start: 2;
+    grid-row-end: 7;
+    grid-column-start: 2;
+    grid-column-end: 7;
+    width:100%;
+    height:100%;
+    background:whitesmoke;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+     "origin factor"
+     "origin close";
+}
+
+.getinvoiceorigin {
+    margin:auto;
+    width: 95%;
+    height:95%;
+    display: grid;
+    grid-template-rows: 70px 1fr;
+    grid-template-areas:
+                "originheader"
+                "originbody";
+    background: white;
+    grid-area: origin;
+}
+
+.invoiceoriginheader {
+    grid-area: originheader;
+    margin:auto;
+}
+
+.originrecords {
+    grid-area: originbody;
+    width:100%;
+    height: 100%;
+}
+
+.originrecords > span {
+    display: block;
+    margin: 0 auto;
+}
+
+.factorinvoice {
+    margin:auto;
+    width: 95%;
+    height:95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    grid-area: factor;
+}
+
+.factorform1 {
+    width:60%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 30px 140px 1fr;
+}
+.factorform2{
+    width:60%;
+    height: 100%;
+    display: none;
+    grid-template-rows: 30px 100px 1fr;
+}
+
+.factorform > h2 {
+    margin:auto;
+}
+
+#factorfrm {
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+#factorfrm {
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.admindashboardmain {
+    grid-row-start: 2;
+    grid-row-end: 7;
+    grid-column-start: 2;
+    grid-column-end: 7;
+    width:100%;
+    height: 100%;
+    background: whitesmoke;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.addcompanypage {
+    grid-row-start: 2;
+    grid-row-end: 7;
+    grid-column-start: 2;
+    grid-column-end: 7;
+    width:100%;
+    height: 100%;
+    background: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addcompanyform {
+    width:50%;
+    height: 95%;
+    display: grid;
+    grid-template-rows: 70px 300px 1fr;
+    background: white;
+    border-radius: 5px;
+}
+
+.addcompanyform > h3 {
+    margin:auto;
+}
+
+.addcompany {
+    grid-column: 1/2;
+    width:95%;
+    height:95%;
+    margin:auto;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:white;
+}
+
+.updatecompany {
+    grid-column: 2/3;
+    width:95%;
+    height:95%;
+    margin:auto;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:white;
+}
+
+#addcompfrm {
+    width: 60%;
+    height:100%;
+    margin: auto;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.investormain {
+    grid-row: 2/7;
+    grid-column: 2/7;
+    width: 100%;
+    height:100%;
+    background: whitesmoke;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.showavailinvoice{
+    width:95%;
+    height:95%;
+    display: grid;
+    grid-template-rows: 70px 1fr;
+    grid-template-areas:
+            "availinvoiceheader"
+            "availinvoicebody";
+    background: white;
+    margin:auto;
+    cursor: pointer;
+}
+
+#availinvoicetable {
+    padding-top:20px;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#availinvoicetable .availinvoicetableheader {
+    grid-area: availinvoiceheader;
+    width:100%;
+    margin: auto;
+}
+
+#availinvoicetable .availinvoicetablebody{
+    grid-area: availinvoicebody;
+    height:100%;
+    width:100%;
+    margin:auto;
+}
+
+ #availinvoicetable th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+#availinvoicetable tr {
+    text-align: left;
+    padding: 8px;
+    border:1px solid #dddddd;
+}
+
+#availinvoicetable tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.topupwallet {
+    width:95%;
+    height:95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    cursor: pointer;
+    background: white;
+}
+
+.topupdiv {
+    grid-row: 2/7;
+    grid-column: 2/7;
+    width: 100%;
+    height:100%;
+    background: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#topupfrm {
+    height: 60%;
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items:center;
+    font-size: 30px;
+    /* background:white; */
+    border: 5px;
+}
+
+.closebidding {
+    grid-area: close;
+    margin:auto;
+    width: 95%;
+    height:95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    flex-direction: column;
+}

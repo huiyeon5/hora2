@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Invoice Factoring</title>
+    <script src="./app.js"></script>
+</head>
+<body>
+
+    <h1>Add Entry</h1><br>
+    <form id="frm1" action="#">
+        Invoice ID:<input type="value" name="id" id="id"><br>
+        Owner:<input type="value" name="owner" id="owner"><br>
+        Min Price:<input type="value" name="minPrice" id="minPrice"><br>
+    </form>
+    <button class="btn btn-default btn-create" type="button" onclick="App.addEntry()">Create</button><br><br>
+
+
+    <h1>Check Entry</h1><br>
+    <form id="frm1" action="#">
+        Invoice ID:<input type="value" name="id" id="id2"><br>
+    </form>
+    <button class="btn btn-default btn-create" type="button" onclick="App.getEntry()">Retrieve</button><br><br>
+
+    <h1>open bidding</h1><br>
+    <form id="frm1" action="#">
+        Invoice ID:<input type="value" name="id" id="id3"><br>
+        Transact As:<input type="value" name="calling_addr" id="calling_addr"><br>
+    </form>
+    <button class="btn btn-default btn-create" type="button" onclick="App.startBidding()">Open</button><br><br>
+
+    <h1>close bidding</h1><br>
+    <form id="frm1" action="#">
+        Invoice ID:<input type="value" name="id" id="id4"><br>
+        Transact As:<input type="value" name="calling_addr2" id="calling_addr2"><br>
+        <input type="checkbox" id="accept" value="true">Accept Result<br>
+    </form>
+    <button class="btn btn-default btn-create" type="button" onclick="App.stopBidding()">Open</button><br><br>
+
+    <h1>place bid</h1><br>
+    <form id="frm1" action="#">
+        Invoice ID:<input type="value" name="id" id="id5"><br>
+        Transact As:<input type="value" name="calling_addr3" id="calling_addr3"><br>
+        Amount(Ether):<input type="value" name="bid" id="bid"><br>
+    </form>
+    <button class="btn btn-default btn-create" type="button" onclick="App.placeBid()">Bid</button><br><br>
+
+</body>
+</html>

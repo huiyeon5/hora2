@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./app.js"></script>
+    <style>
+        body, main{
+            width: calc(100vw - (100vw - 100%));
+            height: 100vh;
+            margin:0;
+            padding:0;
+        }
+
+        .loginmain {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, #5f2c82, #49a09d);
+        }
+
+        .form-holder h1 {
+            padding:0;
+            margin:0;
+            grid-row-start: 2;
+            grid-row-end: 3;
+            grid-column-start: 5;
+            grid-column-end: 9;
+            margin:auto;
+        }
+
+        .form-holder{
+            width: 30%;
+            height: 70%;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(10, 1fr);
+            background: white;
+            border-radius: 10px;
+            box-shadow: -1px 1px 64px -22px rgba(0,0,0,0.75);
+        }
+
+        #loginform{
+            grid-row-start: 4;
+            grid-row-end: 8;
+            grid-column-end: 10;
+            grid-column-start: 4;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+            width:100%;
+            height:100%;
+        }
+
+        .logintext {
+            padding-top: 15px;
+            padding-bottom: 10px;
+            border: none;
+            border-bottom: 2px solid gray;
+        }
+
+
+        #login {
+            border:none;
+            border-radius: 50px;
+            padding:15px;
+            background: linear-gradient(to right, #5f2c82, #49a09d);
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 16px;
+        }
+
+        #login:hover{
+            transform: scale(1.05);
+        }
+
+        .wrongAccount {
+            visibility: hidden;
+            color: red;
+            grid-column: 2/12;
+            grid-row: 9/10;
+            text-align: center;
+        }
+    </style>
+    <title>Hora - Login</title>
+</head>
+<body>
+    <main class="loginmain">
+        <div class="form-holder">
+            <h1>Sign In</h1>
+            <form id="loginform">
+                <input type="text" name="username" class="logintext" placeholder="Username">
+                <input type="password" name="password" class="logintext" placeholder="Password">
+                <input type="button" value="Login" onclick="Login(this.form)" id="login">
+            </form>
+            <div class="wrongAccount">Wrong Username/Password. Please Try Again!</div>
+        </div>
+    </main>
+</body>
+
+<script type="text/javascript">
+
+Login = async (form) =>{
+    if(form.username.value === 'admin'){
+        if(form.password.value==='admin'){
+            sessionStorage.setItem("userType", "admin");
+            window.location = './adminindex.html';
+            return false;
+        }
+    }
+    var numCompanies = 0;
+    App.getNumCompanies().then(result => {
+        numCompanies = result; 
+        for(let i = 1; i <= numCompanies; i++) {
+            App.getCompany(i).then(res => {
+                console.log(res);
+                console.log(res[2] + ' ' +form.username.value + " " + form.password.value);
+                if(form.username.value === res[2] && form.password.value === res[2]){
+                    console.log("Im fucking here")
+                    var userType = res[4];
+                    if(userType === "importer" || userType === "exporter"){
+                        sessionStorage.setItem("userType", userType);
+                        sessionStorage.setItem("companyName", res[2]);
+                        window.location = '/index.html';
+                        return false;
+                    }else if(userType === 'investor'){
+                        sessionStorage.setItem("userType", userType);
+                        sessionStorage.setItem("companyName", res[2]);
+                        window.location = '/investor.html';
+                        return false;
+                    }
+                }
+            })
+        }
+    }).catch(err => {
+        document.querySelector('.wrongAccount').style.visibility = "visible";
+        document.getElementById("loginform").reset();
+    })
+}
+</script>
+</html>

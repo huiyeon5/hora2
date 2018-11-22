@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <script src="./app.js"></script>
+    <script type='text/javascript'>
+        if(!sessionStorage.userType) {
+            window.location = 'login.html';
+        }
+    </script>
+    <title>HORA - Reimagining Supply Chain Financing</title>
+</head>
+<body>
+    <div class="abody">
+        <div class="body">
+            <header>
+                <div class="search">
+                    <input type="text" class="text" placeholder="Type to Search..">
+                    <i class="fas fa-search icon"></i>
+                </div>
+                <div class="icons">
+                    <i class="far fa-bell icon"></i>
+                    <i class="far fa-envelope icon"></i>
+                    <i class="far fa-user-circle icon"></i>
+                </div>
+            </header>
+            <aside class="dashboardaside">
+                <h1 class="heading">HORA</h1>
+                <div class="main">
+                    <h2 class="head">Your Acount</h2>
+                    <ul class="mainlist">
+                        <li class="mainitem">Your Uploads</li>
+                        <li class="mainitem">Check Status</li>
+                    </ul>
+                </div>
+                <div class="function">
+                    <h2 class="head">Marketplace</h2>
+                    <ul class="mainlist">
+                        <li class="mainitem">Upload</li>
+                        <li class="mainitem">Bidding Marketplace</li>
+                        <li class="mainitem">Account Info</li>
+                    </ul>
+                </div>
+            </aside>
+            <div class="topupdiv">
+                <h1>Place Bid</h1><br>
+                <form id="frm1" action="#">
+                    Invoice ID:<input type="value" name="id" id="id5"><br>
+                    Transact As:<input type="value" name="calling_addr3" id="calling_addr3"><br>
+                    Amount(Ether):<input type="value" name="bid" id="bid"><br>
+                </form>
+                <button class="btn btn-default btn-create" type="button" onclick="App.placeBid()">Bid</button><br><br>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    
+    </script>
+</body>
+</html>

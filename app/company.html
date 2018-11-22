@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Company Details</title>
+    <script src="./app.js"></script>
+</head>
+<body>
+
+    <h1>Company Details Page</h1>
+
+    <h3>Create and Add Company</h3>
+    <form id="frm1" action="#">
+        Company Wallet Address:<input type="value" name="wallet" id="wallet"><br>
+
+        Company Name:<input type="value" name="companyName" id="companyName"><br>
+
+        Credit Rating:
+        <select name="creditRating" id="creditRating">
+            <option value="AAA">AAA</option>
+            <option value="A">A</option>
+            <option value="BBB">BBB</option>
+            <option value="B">B</option>
+            <option value="CCC">CCC</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="D">NIL</option>
+        </select><br>
+
+        Company Type: 
+        <select name="companyType" id="companyType">
+            <option value="importer">Importer</option>
+            <option value="exporter">Exporter</option>
+            <option value="investor">Investor</option>
+        </select>
+        <br><button class="btn btn-default btn-create" type="button" onclick="App.addCompany()">Create</button>
+    </form>
+
+    <br><br>
+
+    <h3>Get Company by ID</h3>
+    <form id="form2" action="#">
+        Get a Company by ID: 
+        <br><i>Need to find a way to loop through the number of companies created to get max number of companies</i>
+        <select name="chosenID" id="chosenID">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select> 
+        <br><button class="btn btn-default btn-get" type="button" onclick="App.getCompany()">Get Company</button>
+    </form>
+
+    <br><br>
+
+    <h3>Update a Company by ID</h3>
+    <form id="form3" action="#">
+
+        Company ID: 
+        <select name="updateID" id="updateID">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+
+        <br>New Company Wallet Address:<input type="value" name="newWallet" id="newWallet"><br>
+
+        New Company Name:<input type="value" name="newCompanyName" id="newCompanyName"><br>
+
+        New Credit Rating:
+        <select name="newCreditRating" id="newCreditRating">
+            <option value="AAA">AAA</option>
+            <option value="A">A</option>
+            <option value="BBB">BBB</option>
+            <option value="B">B</option>
+            <option value="CCC">CCC</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+        </select><br>
+
+        New Company Type: 
+        <select name="newCompanyType" id="newCompanyType">
+            <option value="importer">Importer</option>
+            <option value="exporter">Exporter</option>
+            <option value="investor">Investor</option>
+        </select>
+
+        <br><button class="btn btn-default btn-create" type="button" onclick="App.updateCompany()">Update</button>
+    </form>
+
+</body>
+</html>

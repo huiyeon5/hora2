@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <script src="./app.js"></script>
+    <script type='text/javascript'>
+        if(!sessionStorage.userType) {
+            window.location = 'login.html';
+        }
+    </script>
+    <title>HORA - Reimagining Supply Chain Financing</title>
+</head>
+<body>
+    <div class="abody">
+        <div class="body">
+            <header>
+                <div class="search">
+                    <input type="text" class="text" placeholder="Type to Search..">
+                    <i class="fas fa-search icon"></i>
+                </div>
+                <div class="icons">
+                    <i class="far fa-bell icon"></i>
+                    <i class="far fa-envelope icon"></i>
+                    <i class="far fa-user-circle icon"></i>
+                </div>
+            </header>
+            <aside class="dashboardaside">
+                <h1 class="heading">HORA</h1>
+                <div class="main">
+                    <h2 class="head">Your Acount</h2>
+                    <ul class="mainlist">
+                        <li class="mainitem">Your Uploads</li>
+                        <li class="mainitem">Check Status</li>
+                    </ul>
+                </div>
+                <div class="function">
+                    <h2 class="head">Marketplace</h2>
+                    <ul class="mainlist">
+                        <li class="mainitem">Upload</li>
+                        <li class="mainitem">Bidding Marketplace</li>
+                        <li class="mainitem">Account Info</li>
+                    </ul>
+                </div>
+            </aside>
+            <div class="getAllInvoice">
+                <table id="allinvoicetable">
+                    <thead  class="allinvoicetableheader">
+                        <tr>
+                            <th>Invoice ID</th>
+                            <th>Invoice Good</th>
+                            <th>Created At</th>
+                            <th>Importer-Exporter</th>
+                        </tr>
+                    </thead>
+                    <tbody class="allinvoicetablebody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function(){
+            showAllInvoices();
+        }
+
+        showAllInvoices = async () => {
+            App.getNumInvoices().then(result => {
+                numInvoices = result;
+                console.log(numInvoices);
+                for(let i = 1; i <= numInvoices['c'][0]; i++){
+                    App.getInvoice(i).then(res => {
+                        const invoice = res;
+                        console.log(invoice);
+                        if(invoice[1] === sessionStorage.getItem("companyName") || invoice[2] === sessionStorage.getItem('companyName')) {
+                            let tr = document.createElement("tr");
+                            let td1 = document.createElement("td");
+                            td1.appendChild(document.createTextNode(i));
+                            let td2 = document.createElement("td");
+                            let td3 = document.createElement("td");
+                            let td4 = document.createElement("td");
+                            td2.appendChild(document.createTextNode(invoice[3]));
+                            td3.appendChild(document.createTextNode(invoice[0]));
+                            td4.appendChild(document.createTextNode(`${invoice[1]}-${invoice[2]}`));
+                            tr.appendChild(td1);
+                            tr.appendChild(td2);
+                            tr.appendChild(td3);
+                            tr.appendChild(td4);
+                            tr.addEventListener('click', function() {
+                                let temp = []
+                                sessionStorage.setItem('selectedID', i)
+                                if(sessionStorage.getItem('invoiceID') === null){
+                                    temp[0] = i;
+                                    console.log(`Temp = ${temp}`);
+                                    sessionStorage.setItem('invoiceID', JSON.stringify(temp));
+                                } else {
+                                    temp = JSON.parse(sessionStorage.getItem('invoiceID'));
+                                    console.log(`Temp = ${temp}`);
+                                    temp.push(i);
+                                    sessionStorage.setItem('invoiceID', JSON.stringify(temp));
+                                }
+                                window.location = './invoicedetails.html';
+                                return false;
+                            })
+                            document.querySelector(".allinvoicetablebody").appendChild(tr);
+                        }
+                    })
+                }
+            })
+        }
+    </script>
+</body>
+</html>

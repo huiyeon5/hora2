@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <script src="./app.js"></script>
+    <script type='text/javascript'>
+        if(!sessionStorage.userType) {
+            window.location = 'login.html';
+        }
+    </script>
+    <title>HORA - Reimagining Supply Chain Financing</title>
+</head>
+<body>
+    <div class="abody">
+        <div class="body">
+            <header>
+                <div class="search">
+                    <input type="text" class="text" placeholder="Type to Search..">
+                    <i class="fas fa-search icon"></i>
+                </div>
+                <div class="icons">
+                    <i class="far fa-bell icon"></i>
+                    <i class="far fa-envelope icon"></i>
+                    <i class="far fa-user-circle icon"></i>
+                </div>
+            </header>
+            <aside class="dashboardaside">
+                <h1 class="heading">HORA</h1>
+                <div class="main">
+                    <h2 class="head">Your Acount</h2>
+                    <ul class="mainlist">
+                        <li class="mainitem">Your Uploads</li>
+                        <li class="mainitem">Check Status</li>
+                    </ul>
+                </div>
+                <div class="function">
+                    <h2 class="head">Marketplace</h2>
+                    <ul class="mainlist">
+                        <li class="mainitem">Upload</li>
+                        <li class="mainitem">Bidding Marketplace</li>
+                        <li class="mainitem">Account Info</li>
+                    </ul>
+                </div>
+            </aside>
+            <div class="investormain">
+                <div class="showavailinvoice">
+                    <table id="availinvoicetable">
+                        <thead  class="availinvoicetableheader">
+                            <tr>
+                                <th>Invoice ID</th>
+                                <th>Exporter</th>
+                                <th>Credit Term</th>
+                                <th>Price of Invoice</th>
+                            </tr>
+                        </thead>
+                        <tbody class="availinvoicetablebody">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="topupwallet" onclick="gototopup()">
+                    Top up wallet
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onload = function(){
+            showAllAvailInvoice();
+        }
+
+        showAllAvailInvoice = async () => {
+            const invoices = JSON.parse(sessionStorage.getItem('invoiceID'));
+            console.log(invoices);
+            for(let i = 0; i < invoices.length; i++){
+                App.getEntry(invoices[i]).then(res => {
+                    App.getInvoice(invoices[i]).then(result => {
+                        let tr = document.createElement("tr");
+                        let td1 = document.createElement("td");
+                        td1.appendChild(document.createTextNode(invoices[i]));
+                        let td2 = document.createElement("td");
+                        td2.appendChild(document.createTextNode(result[2]));
+                        let td3 = document.createElement("td");
+                        td3.appendChild(document.createTextNode(result[5]));
+                        let td4 = document.createElement("td");
+                        td4.appendChild(document.createTextNode(res[3]['c'][0]));
+                        tr.appendChild(td1);
+                        tr.appendChild(td2);
+                        tr.appendChild(td3);
+                        tr.appendChild(td4);
+                        tr.addEventListener('click', function() {
+                            window.location = '/placebid.html'
+                        })
+                        document.querySelector(".availinvoicetablebody").appendChild(tr);
+                    })
+                }).catch(err => {
+                    console.log(err)
+                })
+            }
+        }
+
+        function gototopup() {
+            window.location = '/topup.html';
+            return false;
+        }
+    </script>
+</body>
+</html>
